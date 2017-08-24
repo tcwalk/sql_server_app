@@ -23,3 +23,11 @@ test:
 production:
   <<: *default
   database: db/production.sqlite3
+
+
+agrobase:
+ adapter: sqlserver
+ database: SANDBOX
+ username: *****
+ password: *****
+ dataserver: 134.129.117.80/SQLEXPRESS
