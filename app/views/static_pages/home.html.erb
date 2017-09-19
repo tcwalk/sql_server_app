@@ -1,11 +1,45 @@
 <h1>StaticPages#home</h1>
+
+
 <p>Find me in app/views/static_pages/home.html.erb</p>
 
+<%# require 'mysql2' %>
+<% db_config = YAML.load_file('config/database.yml') %>
+
+<%= db_config["racecar"] %>
+<%# client = ActiveRecord::Base.establish_connection( adapter: 'mysql2', encoding: 'utf8', host: '134.129.117.148', database: 'classicmodels', port: '3306', username: 'testuser', password: 'testpass' ) %>
+<% client = ActiveRecord::Base.establish_connection( db_config["racecar"] ) %>
+<%= client.connection.tables %>
 
 
 
+<%# <%= db_config["sandbox"]["dataserver"].gsub!('\\', '/') %>
+<%= db_setting = db_config["sandbox"] %>
+<p> </p>
+<%# <%= db_setting["dataserver"].gsub!('/', '\\') %>
+<%# <%= db_setting %>
 
 
+<%= server = db_setting["dataserver"] %>
+<p> </p>
+<% user = db_setting["username"] %>
+<% pass = db_setting["password"] %>
+<% data = db_setting["database"] %>
+<% port = db_setting["port"] %>
 
+<% client1 = TinyTds::Client.new(username: user, password: pass, dataserver: server, port: port, database: data ) %>
+
+<%# <% client = TinyTds::Client.new(username: 'tom', password: 'Quatro4$', dataserver: '134.129.117.80\sqlexpress', port: 1433, database: 'SANDBOX' ) %>
+<%# <% client = TinyTds::Client.new( db_config["sandbox"]) %>
+<%# <% client = db_config["sandbox"] %>
+<%# <% client[dataserver:'134.129.117.80\sqlexpress'] %>
+
+<%# <%= "\n\nclient active = #{client.active?}" %>
+<%# <%= "client = #{client.methods}" %>
+<%results = client1.execute("SELECT * FROM information_schema.tables WHERE TABLE_TYPE='BASE TABLE' AND TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'EXM03'") %>
+<% results.each do |row| %>
+  <%= row %>
+  <%= row.col %>
+<% end %>
 
 

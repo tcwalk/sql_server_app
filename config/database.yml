@@ -25,9 +25,24 @@ production:
   database: db/production.sqlite3
 
 
-agrobase:
+racecar:
+  adapter: mysql2
+  host: ****
+  database: classicmodels
+  username: ****
+  password: ****
+
+sandbox:
  adapter: sqlserver
  database: SANDBOX
- username: *****
- password: *****
- dataserver: 134.129.117.80/SQLEXPRESS
+ username: ****
+ password: ****
+ dataserver: ****
+ port: 1433
+
+
+# adapter: sqlserver
+# database: SANDBOX
+# username: tom
+# password: Quatro4$
+# dataserver: 134.129.117.80/SQLEXPRESS

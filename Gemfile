@@ -6,13 +6,15 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'activerecord-sqlserver-adapter',  '~>5.0'
-gem 'tiny_tds',                '2.0'
+gem 'activerecord', '5.0.5'
+gem 'activerecord-sqlserver-adapter'
+gem 'tiny_tds'
+gem 'mysql2'
 
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.0.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
